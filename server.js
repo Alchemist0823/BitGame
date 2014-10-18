@@ -66,8 +66,10 @@ app.get("/api/prob/:pid", function(req, res){
 });
 
 app.post("/api/answer", function(req, res){
-    if (req.body.pid) {
-        checker.check(req, function(resJson){
+    var msg = checker.validate(req);
+    if (msg == "ok"){
+        console.log("passed validation");
+        checker.check(req, function(resJson) {
             console.log(resJson);
             if (req.session.uid) {
                 var userObj = user.getUserData(req.session.uid);
@@ -85,8 +87,9 @@ app.post("/api/answer", function(req, res){
             } else
                 res.json({"rate": resJson.rate});
         });
-    } else
-        res.json({ok: 0});
+    } else {
+        res.json({"error": msg});
+    }
 });
 
 var server = app.listen(3000, function(){

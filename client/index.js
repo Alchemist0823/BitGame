@@ -72,6 +72,10 @@ $(window).load(function(){
             url: URL + "answer",
             type: "post",
             success: function(result){
+                if(result.error){
+                    alert(result.error);
+                    return;
+                }
                 var rate = result.rate;
                 if (rate >= 0)
                     alert("Your score is " + rate);

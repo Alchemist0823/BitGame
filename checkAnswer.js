@@ -57,6 +57,64 @@ function checkRE(stderr){
     return true;
 }
 
+function getType(c) {
+    if (("a" <= c && c <= "z") || ("A" <= c && c <= "Z")) {
+        return 1;
+    } else if (("0" <= c && c <= "9")) {
+        return 2;
+    } else if (c == "\t" || c == " " || c == "(" || c == ")") {
+        return 4;
+    } else
+        return 3;
+}
+
+function validate(req){
+    var reqJson = req.body;
+    if(!reqJson.pid || !reqJson.answer || reqJson.answer == "") return "invalid request";
+    var pid = reqJson.pid;
+    var answer = reqJson.answer;
+    var probInfo = data.probs[pid];
+    var operators = JSON.parse(JSON.stringify(probInfo.operators));
+
+    var str = "";
+    var tokens=[];
+    var lasttype = 4;
+    for (var i = 0; i < answer.length; i ++) {
+        var c = answer.charAt(i);
+        var type = getType(c);
+        if (lasttype != type && (type != 3 || str.length == 0 || c != str.charAt(str.length - 1))) {
+            if (lasttype < 4)
+                tokens.push({
+                    "type": lasttype,
+                    "str" : str
+                });
+            str = c;
+            lasttype = type;
+        } else
+            str += c;
+    }
+    if (lasttype < 4)
+        tokens.push({
+            "type": lasttype,
+            "str" : str
+        });
+    console.log(tokens);
+    console.log(operators);
+
+    for (var i = 0; i < tokens.length; i ++) {
+        if (tokens[i].type == '3') {
+            if (operators[tokens[i].str] !== undefined) {
+                operators[tokens[i].str]--;
+                if (operators[tokens[i].str] < 0)
+                    return "the number of specific operator exceeds the limitation";
+            } else
+                return "illegal operator";
+        }
+    }
+    return "ok";
+}
+
 module.exports = {
-    check: check
+    check: check,
+    validate: validate
 };
