@@ -157,13 +157,12 @@ h1{
 
 #login-title h1 {
     font-size: 70px;
-    font-family: "open sans", sans-serif;
+    font-family: "open sans", sans-serif !important;
 }
 
 #login-title p {
-    font-size: 25px;
-    font-family: "open sans", sans-serif;
-    padding: 30px 0;
+    font-size: 20px;
+    font-family: "open sans", sans-serif !important;
 }
 
 #login-title form {
