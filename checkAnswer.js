@@ -1,5 +1,7 @@
+var request = require("request");
+
 function check(req, res){
-    res.json({"correct": "passed"});
+    res.json(req.body.exp);
 }
 
 module.exports = {

@@ -31,7 +31,7 @@ app.get("/api/list", function(req, res){
 });
 
 app.get("/api/prob/:pid", function(req, res){
-    res.json(data.probs[pid]);
+    res.json(data.probs[req.params.pid]);
 });
 
 app.post("/api/answer", function(req, res){
