@@ -94,12 +94,15 @@ app.post("/mylogin", function(req, res){
             user.addNewUser(req.body.uid, req.body.password);
             req.session.uid = req.body.uid;
             user.writeAllUserData();
+            res.redirect("/");
         } else {
-            if (user.getUserData(req.body.uid).password == req.body.password)
+            if (user.getUserData(req.body.uid).password == req.body.password) {
                 req.session.uid = req.body.uid;
+                res.redirect("/");
+            } else
+                res.redirect("/login");
         }
     }
-    res.redirect("/");
 });
 
 app.get("/", function(req, res){
