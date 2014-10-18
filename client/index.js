@@ -2,7 +2,7 @@
  * Created by Alchemist on 2014/10/17.
  */
 
-var URL="http://localhost:3000/";
+var URL="/api/";
 
 $(window).load(function(){
     var currentPid;
