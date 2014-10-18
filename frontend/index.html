@@ -2,18 +2,30 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>BitGame</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.combootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <!--<link rel="stylesheet" href="style.css">-->
+    <script src="jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="container">
-    <div id="menu">
+    <div id="menu" class="col-md-3">
 
     </div>
-    <div id="content">
+    <div id="content" class="col-md-9">
+    	<h1 class="text-center">BitGame</h1>
+    	<p id="question">
+    	</p>
 
+    	<form action="">
+    		<div class="form-group">
+    			<label for="answer">Answer:</label>
+    			<input type="text" class="form-control" id="answer" placeholder="Enter Answer">
+    			<button type="Submit" class="btn btn-primary">Submit</button>
+    		</div>
+    	</form>
     </div>
 </div>
 </body>
