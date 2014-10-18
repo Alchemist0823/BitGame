@@ -79,13 +79,14 @@ $(window).load(function(){
                 $("#problems").empty();
                 $.each(result, function(i, value) {
                     var stars = (value.ops <= value.level[0]) ? 3 : (value.ops <= value.level[1] ? 2 : 1);
-                    totalStars = totalStars + stars;
                     var correct = "";
                     if (typeof(value.correct) != "undefined" && value.correct)
                         correct = " correct";
+                    else stars = 0;
+                    totalStars = totalStars + stars;
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
-                $("#total-stars").html("Total <i class='fa fa-star'></i>: " + totalStars);
+                $("#total-stars").html("Total <i class='fa fa-star' id='tot-star'></i>: " + totalStars);
                 $(".problem").click(function(){
                     $('#myModal').modal('hide');
                     $("#answer").val("");

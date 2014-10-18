@@ -132,7 +132,7 @@ var probs = {
         "input": ["10 2 1", "1 2 1", "0 1 100"],
         "output": ["2", "2", "100"],
         "level": [10, 15]
-    }
+    },
 	"7" : {
         "title": "isPower2",
         "description": "Return 1 if x is a power of 2, 0 otherwise",
@@ -156,31 +156,38 @@ var probs = {
 var list = {
     "0" : {
         "pid": "0",
-        "title": "level 1"
+        "title": "level 1",
+        "level": [1, 2]
     },
     "1" : {
         "pid": "1",
-        "title": "level 2"
+        "title": "level 2",
+        "level": [1, 2]
     },
     "2" : {
         "pid": "2",
-        "title": "level 3"
+        "title": "level 3",
+        "level": [1, 2]
     },
     "3" : {
         "pid": "3",
-        "title": "level 4"
+        "title": "level 4",
+        "level": [1, 2]
     },
     "4" : {
         "pid": "4",
-        "title": "level 5"
+        "title": "level 5",
+        "level": [10, 15]
     },
     "5" : {
         "pid": "5",
-        "title": "level 6"
+        "title": "level 6",
+        "level": [10, 15]
     },
     "6" : {
         "pid": "6",
-        "title": "level 7"
+        "title": "level 7",
+        "level": [10, 15]
     }
 };
 

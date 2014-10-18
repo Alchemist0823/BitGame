@@ -169,3 +169,8 @@ h1{
 #login-title form .btn {
     width: 100px;
 }
+
+#tot-star{
+    color:gold;
+    text-shadow: 0 0 1px gray;
+}
