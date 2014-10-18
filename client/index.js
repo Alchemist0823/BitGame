@@ -35,15 +35,14 @@ $(window).load(function(){
                 $.each(result, function(i, value) {
                     $("#menu").append('<div class=\"problem\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
+                $(".problem").click(function(){
+                    getProblem(this.id.substring(8));
+                });
             },
             data: {
                 id: userName
             },
             dataType: "json"
-        });
-
-        $(".problem").click(function(){
-            getProblem(this.id.substring(7));
         });
     }
 
@@ -56,7 +55,6 @@ $(window).load(function(){
                 var rate = result.rate;
 
                 alert("Your answer is " + correct + ". Your score is " + rate);
-                //
             },
             data: {
                 id: 1,
