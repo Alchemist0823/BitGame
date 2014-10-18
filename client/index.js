@@ -32,12 +32,12 @@ $(window).load(function(){
             url: URL + "list",
             type: "get",
             success: function(result){
-                $("#menu").empty();
+                $("#problems").empty();
                 $.each(result, function(i, value) {
                     var correct = "";
                     if (typeof(value.rate) != "undefined")
                         correct = " correct";
-                    $("#menu").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
+                    $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
                 $(".problem").click(function(){
                     getProblem(this.id.substring(8));

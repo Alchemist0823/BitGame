@@ -23,17 +23,47 @@
     color: #00FF00;
 }
 
+.container {
+	margin: 0px;
+	padding: 0px;
+}
+
+#menu-toggle {
+	font-size: 24pt;
+	color: #FFFFFF;
+}
+
+#menu-icon {
+	top: 5px;
+	float: right;
+}
+
+#menu-toggle:hover {
+	cursor: pointer;
+}
+
 body {
-	background-color: #FFFFFF;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+}
+
+#answer {
+	margin-bottom: 1%;
 }
 
 #menu {
 	background-color: #2E2E2E;
-	font-size: 12pt;
-
+	font-size: 10pt;
+	height: 100%;
+	overflow: hidden;
 }
 
 #content {
 	background-color: #000000;
 	color: #FFFFFF;
+}
+
+@media(min-height: 1024px) {
+	
 }
