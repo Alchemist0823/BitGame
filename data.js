@@ -1,6 +1,6 @@
 var probs = {
     "0" : {
-        "title": "level 1",
+        "title": "Double",
         "description": "using only the following bit operations to return the value of x * 2. Input variable: x",
         "operators": {
             "&": 1,
@@ -20,7 +20,7 @@ var probs = {
         "level": [1, 2]
     },
     "1" : {
-        "title": "level 2",
+        "title": "Div2",
         "description": "Given an integer x, calculate x / 2",
         "operators": {
             "&": 1,
@@ -40,7 +40,7 @@ var probs = {
         "level": [1, 2]
     },
 	"2" : {
-        "title": "level 3",
+        "title": "x AND y",
         "description": "Given x and y, calculate x AND y using DeMorgan's law",
         "operators": {
             "&": 0,
@@ -60,7 +60,7 @@ var probs = {
         "level": [1, 2]
     },
 	"3" : {
-        "title": "level 4",
+        "title": "Two's Complement",
         "description": "Return 1 if x can be represented as an n-bit, two's complement integer",
         "operators": {
             "&": 1,
@@ -80,7 +80,7 @@ var probs = {
         "level": [1, 2]
     },
 	"4" : {
-        "title": "level 5",
+        "title": "Normalize",
         "description": "Return 1 if positive, 0 if zero, -1 if negative",
         "operators": {
             "&": 1,
@@ -100,7 +100,7 @@ var probs = {
         "level": [1, 2]
     },
     "5" : {
-        "title": "level 6",
+        "title": "isPowerOfTwo",
         "description": "isPower2 - returns 1 if x is a power of 2, and 0 otherwise.  Examples: isPower2(5) = 0, isPower2(8) = 1, isPower2(0) = 0. Note that no negative number is a power of 2.",
         "operators": {
             "!": 5,
@@ -117,7 +117,7 @@ var probs = {
         "level": [10, 15]
     },
     "6" : {
-        "title": "level 7",
+        "title": "Conditional",
         "description": " conditional - same as x ? y : z. Example: conditional(2,4,5) = 4. ",
         "operators": {
             "!": 5,
