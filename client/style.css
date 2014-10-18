@@ -59,6 +59,12 @@ body {
 	color: #FFFFFF;
 }
 
-@media(min-height: 1024px) {
-	
+#form-box {
+	color: #000000;
+}
+
+.center {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
 }
