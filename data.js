@@ -1,10 +1,19 @@
-var p
+var baseIntProgram =
+    '#include<stdio.h>\n' +
+    'int x,y,z,res;' +
+    'int main(){' +
+        'scanf("%d%d%d",&x,&y,&z);' +
+        'res = userinput;' +
+        'printf("%d",res);' +
+        'return 0;' +
+    '}';
+
 
 var probs = {
     "0" : {
         "title": "level 1",
         "description": "task 1",
-        "program": ""
+        "program": baseIntProgram
     },
     "1" : {
         "title": "level 2",
