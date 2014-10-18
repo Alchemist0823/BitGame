@@ -31,20 +31,20 @@ function check(req, callback){
     };
     request.post({url:hackerRankAPIURL, formData: formData}, function (err, httpResponse, body) {
         if (err) {
-            console.error('error:', err);
-            callback({"error": "connection error", "pass": false});
+            //console.error('error:', err);
+            callback({"error": "connection error", "rate": -1});
         } else {
             var jsonReceived = JSON.parse(body);
             var compileMsg = jsonReceived.result.compilemessage;
             var stderr = jsonReceived.result.stderr;
             var stdout = jsonReceived.result.stdout;
             if (compileMsg == "" && checkRE(stderr) && JSON.stringify(stdout) == correctOutStr) {
-                console.log(JSON.stringify({"pass": true}));
-                callback({"pass": true});
+                //console.log(JSON.stringify({"rate": 1}));
+                callback({"rate": 1});
             }
             else {
-                console.log(JSON.stringify({"error": "wrong answer", "pass": false}));
-                callback({"error": "wrong answer", "pass": false});
+                //console.log(JSON.stringify({"error": "wrong answer", "rate": -1}));
+                callback({"error": "wrong answer", "rate": -1});
             }
         }
     });

@@ -67,18 +67,24 @@ app.get("/api/prob/:pid", function(req, res){
 
 app.post("/api/answer", function(req, res){
     if (req.body.pid) {
-        checker.check(req, res);
-        if (req.session.uid) {
-            var userObj = user.getUserData(req.session.uid);
-            userObj.prob[req.body.pid] = {
-                "rate": 10,
-                "date": new Date(),
-                "answer": req.body.answer
-            };
-            user.writeAllUserData();
-            res.json(userObj.prob[req.body.pid]);
-        } else
-            res.json({"rate": 10});
+        checker.check(req, function(resJson){
+            console.log(resJson);
+            if (req.session.uid) {
+                var userObj = user.getUserData(req.session.uid);
+
+                if (!(userObj.prob[req.body.pid]) || userObj.prob[req.body.pid].rate < resJson.rate) {
+
+                    userObj.prob[req.body.pid] = {
+                        "rate": resJson.rate,
+                        "date": new Date(),
+                        "answer": req.body.answer
+                    };
+                    user.writeAllUserData();
+                }
+                res.json({"rate": resJson.rate});
+            } else
+                res.json({"rate": resJson.rate});
+        });
     } else
         res.json({ok: 0});
 });

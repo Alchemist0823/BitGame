@@ -67,7 +67,7 @@ $(window).load(function(){
     }
 
     function sendAnswer(){
-        alert($("#answer").val());
+        //alert($("#answer").val());
         $.ajax({
             url: URL + "answer",
             type: "post",
