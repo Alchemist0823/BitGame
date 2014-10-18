@@ -2,10 +2,9 @@
  * Created by Alchemist on 2014/10/17.
  */
 
-var URL="/";
+var URL="http://localhost:3000/";
 
-window.onload(function(){
-
+$(window).load(function(){
     var currentPid;
     var answer;
     var userName;
