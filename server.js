@@ -20,7 +20,7 @@ var morgan       = require('morgan');
 var app = express();
 
 user.readAllUserData();
-//mongoose.connect(configDB.url);
+mongoose.connect(configDB.url);
 
 // Facebook stuff
 require('./facebookAuth/passport')(passport);
@@ -110,7 +110,7 @@ app.get("/", function(req, res){
     }
     res.render("index");
 });
-/*
+
 app.post("/api/login", function(req, res){
     if (req.body.uid) {
         if (!user.getUserData(req.body.uid)) {
@@ -120,7 +120,7 @@ app.post("/api/login", function(req, res){
         res.json({"ok": 1});
     }
     res.json({"ok": 0});
-});*/
+});
 
 app.get("/api/list", function(req, res){
     var probs = JSON.parse(JSON.stringify(data.list));
