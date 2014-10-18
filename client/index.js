@@ -21,11 +21,7 @@ $(window).load(function(){
             type: "get",
             success: function(result){
                 $("#title").innerText = result.title
-                $("#problem").innerText = result.title
-                $("#menu").empty();
-                $.each(result, function(i, value) {
-                    $("#menu").append('<div class=\"problem\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
-                });
+                $("#question").innerText = result.description;
             }
         });
     }
