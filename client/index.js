@@ -20,9 +20,10 @@ $(window).load(function(){
             url: URL + "prob/" + pid,
             type: "get",
             success: function(result){
-                $("#title").innerText = result.title
-                $("#question").innerText = result.description;
-            }
+                alert(result.description);
+                $("#question").text(result.description);
+            },
+            dataType: "json"
         });
     }
 
@@ -31,9 +32,12 @@ $(window).load(function(){
             url: URL + "list",
             type: "get",
             success: function(result){
-                $("#menu").empty();
+                $("#problems").empty();
                 $.each(result, function(i, value) {
-                    $("#menu").append('<div class=\"problem\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
+                    var correct = "";
+                    if (typeof(value.rate) != "undefined")
+                        correct = " correct";
+                    $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
                 $(".problem").click(function(){
                     getProblem(this.id.substring(8));
