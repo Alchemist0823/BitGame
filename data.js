@@ -132,7 +132,7 @@ var probs = {
         "input": ["10 2 1", "1 2 1", "0 1 100"],
         "output": ["2", "2", "100"],
         "level": [10, 15]
-    }
+    },
 	"7" : {
         "title": "isPower2",
         "description": "Return 1 if x is a power of 2, 0 otherwise",

@@ -8,7 +8,7 @@ $(window).load(function(){
     var currentPid;
     var answer;
     var userName;
-    var totProb = 7;
+    var totProb = 8;
 
     getProblemList(1);
 
