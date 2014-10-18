@@ -99,8 +99,8 @@ var probs = {
         "output": ["1", "-1", "0"],
         "level": [1, 2]
     },
-    "7" : {
-        "title": "level 8",
+    "5" : {
+        "title": "level 6",
         "description": "isPower2 - returns 1 if x is a power of 2, and 0 otherwise.  Examples: isPower2(5) = 0, isPower2(8) = 1, isPower2(0) = 0. Note that no negative number is a power of 2.",
         "operators": {
             "!": 5,
@@ -116,8 +116,8 @@ var probs = {
         "output": ["1", "0", "1","0","1"],
         "level": [10, 15]
     },
-    "8" : {
-        "title": "level 9",
+    "6" : {
+        "title": "level 7",
         "description": " conditional - same as x ? y : z. Example: conditional(2,4,5) = 4. ",
         "operators": {
             "!": 5,
@@ -159,6 +159,10 @@ var list = {
     "5" : {
         "pid": "5",
         "title": "level 6"
+    },
+    "6" : {
+        "pid": "6",
+        "title": "level 7"
     }
 };
 
