@@ -1,1 +1,1 @@
-{"sunzehao":{"username":"sunzehao","password":"123456","prob":{"0":{"correct":0,"ops":1,"date":"2014-10-18T15:38:10.983Z","answer":"1 << x"}}},"test":{"username":"test","password":"123","prob":{}}}
+{"sunzehao":{"username":"sunzehao","password":"123456","prob":{"0":{"correct":1,"ops":1,"date":"2014-10-18T15:57:58.425Z","answer":"x << 1"},"1":{"correct":1,"ops":1,"date":"2014-10-18T15:58:20.782Z","answer":"x >> 1"}}},"test":{"username":"test","password":"123","prob":{}}}

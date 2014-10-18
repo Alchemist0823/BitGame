@@ -63,6 +63,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
+    width: 85%;
     max-width: 700px;
 }
 
@@ -132,4 +133,30 @@ h1{
     -ms-transition: opacity 0.5s;
     -o-transition: opacity 0.5s;
     transition: opacity 0.5s;
+}
+
+#login-title {
+    margin-top: 120px;
+    color: white;
+    display: none;
+}
+
+#login-title h1 {
+    font-size: 70px;
+    font-family: "open sans", sans-serif;
+}
+
+#login-title p {
+    font-size: 25px;
+    font-family: "open sans", sans-serif;
+    padding: 30px 0;
+}
+
+#login-title form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#login-title form .btn {
+    width: 100px;
 }

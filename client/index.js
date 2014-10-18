@@ -98,7 +98,7 @@ $(window).load(function(){
                 }
                 var correct = result.correct;
                 if (correct)
-                    swal("Good job!", "Your score is " + result.ops, "success");
+                    swal("Good job!", "Your score is " + result.stars, "success");
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");
                 getProblemList(0);
