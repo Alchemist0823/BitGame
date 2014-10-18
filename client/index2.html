@@ -12,10 +12,10 @@
 <body>
     <div class="container">
 
-	<div class="jumbotron text-center">
+	<div class="text-center" id="login-title">
 		<h1><span class="fa fa-calculator"></span> >>B|tG&me>></h1>
 
-		<p>To Play, Login with:</p>
+		<p>To play, please login/register</p>
 
                 <form action="/mylogin" method="post">
                     <input type="text" class="form-control" name="uid" placeholder="Username"><br/>
@@ -25,6 +25,13 @@
                     <button class="btn btn-success" type="submit" style="float: right">Go</button>
                 </form>
         </div>
+        <script>
+            $(function() {
+                $(window).load(function () {
+                    $("#login-title").fadeIn();
+                });
+            });
+        </script>
 
     </div>
 </body>
