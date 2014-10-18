@@ -82,7 +82,7 @@ function validate(req){
     for (var i = 0; i < answer.length; i ++) {
         var c = answer.charAt(i);
         var type = getType(c);
-        if (lasttype != type && (type != 3 || str.length == 0 || c != str.charAt(str.length - 1))) {
+        if ((lasttype != type && (type != 3 || str.length == 0 || c != str.charAt(str.length - 1))) || (c == '!' && lasttype == type)) {
             if (lasttype < 4)
                 tokens.push({
                     "type": lasttype,
