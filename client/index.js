@@ -44,12 +44,13 @@ $(window).load(function(){
                 $(".operator-btn").click(function(){
                     $("#answer").val( $("#answer").val() + $(this).text());
                 });
-                if (typeof(result.rate) != "undefined") {
-                    if (result.rate >= 0) {
-                        $("#result").html("You have solved this problem.<br/> Your highest score is " + result.rate + " on " + result.date);
+                if (typeof(result.correct) != "undefined") {
+                    if (result.correct) {
+                        $("#result").html("You have solved this problem.<br/> The minimum number of operators you used is " + result.ops + " on " + result.date);
                     } else {
-                        $("#result").html("You failed on this problem<br/> Your incorrect answer is" + result.answer + ".");
+                        $("#result").html("You failed on this problem<br/>");
                     }
+                    $("#answer").val(result.answer);
                 } else
                     $("#result").html("You never try this problem");
             },
@@ -65,7 +66,7 @@ $(window).load(function(){
                 $("#problems").empty();
                 $.each(result, function(i, value) {
                     var correct = "";
-                    if (typeof(value.rate) != "undefined" && value.rate >= 0)
+                    if (typeof(value.correct) != "undefined")
                         correct = " correct";
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
@@ -97,7 +98,7 @@ $(window).load(function(){
                 }
                 var rate = result.rate;
                 if (rate >= 0)
-                    swal("Good job!", "Your score is " + rate, "success");
+                    swal("Good job!", "Your score is " + result.ops, "success");
                     //alert("Your score is " + rate);
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");

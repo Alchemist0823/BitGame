@@ -32,19 +32,19 @@ function check(req, callback){
     request.post({url:hackerRankAPIURL, formData: formData}, function (err, httpResponse, body) {
         if (err) {
             //console.error('error:', err);
-            callback({"error": "connection error", "rate": -1});
+            callback({"error": "connection error", "correct": 0});
         } else {
             var jsonReceived = JSON.parse(body);
             var compileMsg = jsonReceived.result.compilemessage;
             var stderr = jsonReceived.result.stderr;
             var stdout = jsonReceived.result.stdout;
             if (compileMsg == "" && checkRE(stderr) && JSON.stringify(stdout) == correctOutStr) {
-                //console.log(JSON.stringify({"rate": 1}));
-                callback({"rate": 1});
+                //console.log(JSON.stringify({"correct": 1}));
+                callback({"correct": 1});
             }
             else {
-                //console.log(JSON.stringify({"error": "wrong answer", "rate": -1}));
-                callback({"error": "wrong answer", "rate": -1});
+                //console.log(JSON.stringify({"error": "wrong answer", "correct": -1}));
+                callback({"error": "wrong answer", "correct": 0});
             }
         }
     });
@@ -70,7 +70,7 @@ function getType(c) {
 
 function validate(req){
     var reqJson = req.body;
-    if(!reqJson.pid || !reqJson.answer || reqJson.answer == "") return "invalid request";
+    if(!reqJson.pid || !reqJson.answer || reqJson.answer == "") return {msg:"invalid request"};
     var pid = reqJson.pid;
     var answer = reqJson.answer;
     var probInfo = data.probs[pid];
@@ -101,17 +101,19 @@ function validate(req){
     console.log(tokens);
     console.log(operators);
 
+    var ops = 0;
     for (var i = 0; i < tokens.length; i ++) {
         if (tokens[i].type == '3') {
             if (operators[tokens[i].str] !== undefined) {
-                operators[tokens[i].str]--;
+                operators[tokens[i].str] --;
+                ops ++;
                 if (operators[tokens[i].str] < 0)
-                    return "the number of specific operator exceeds the limitation";
+                    return {msg:"the number of specific operator exceeds the limitation"};
             } else
-                return "illegal operator";
+                return {msg:"illegal operator"};
         }
     }
-    return "ok";
+    return {msg: "ok", ops: ops};
 }
 
 module.exports = {

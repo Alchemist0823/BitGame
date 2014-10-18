@@ -13,6 +13,12 @@ function getUserData(uid) {
     return userData[uid];
 }
 
+function addNewUser(uid) {
+    if (!getUserData(uid)) {
+        userData[uid] = {"username": uid, "prob": {}};
+    }
+}
+
 function writeAllUserData() {
     fs.writeFile('userdata.json',JSON.stringify(userData), function(err) {
         if(err) {
@@ -26,6 +32,8 @@ function writeAllUserData() {
 module.exports = {
     readAllUserData: readAllUserData,
     getUserData: getUserData,
-    writeAllUserData: writeAllUserData
+    addNewUser: addNewUser,
+    writeAllUserData: writeAllUserData,
+	userData: userData
 };
 

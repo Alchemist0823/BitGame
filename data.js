@@ -1,7 +1,7 @@
 var probs = {
     "0" : {
         "title": "level 1",
-        "description": "Given an integer x, calculate x + x",
+        "description": "using only the following bit operations to return the value of x * 2. Input variable: x",
         "operators": {
             "&": 1,
             "|": 1,
@@ -16,7 +16,8 @@ var probs = {
             "-": 1
         },
         "input": ["1", "2", "3"],
-        "output": ["2", "4", "6"]
+        "output": ["2", "4", "6"],
+        "level": [1, 2, 3]
     },
     "1" : {
         "title": "level 2",
@@ -35,7 +36,8 @@ var probs = {
             "-": 1
         },
         "input": ["2", "4", "8"],
-        "output": ["1", "2", "4"]
+        "output": ["1", "2", "4"],
+        "level": [1, 2, 3]
     }
 };
 
