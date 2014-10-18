@@ -1,11 +1,28 @@
-h1 {
+/* Variables */
+@textColor = @gray-light;
+@textColorOnHover = @lighten(@textColor, 15%);
 
+.problem {
+	color: @textColor;
+	text-decoration: none;
+
+	&:hover {
+		color: @textColorOnHover;
+		text-decoration: underline;
+	}
 }
 
 body {
 	background-color: #fff;
 }
 
+#menu {
+	background-color: gray;
+	font-size: 12pt;
+
+}
+
 #container {
-	background-color: color.BLACK;
+	background-color: black;
+	color: @textColor;
 }
