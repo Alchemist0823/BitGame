@@ -2,6 +2,7 @@
 	color: #D8D8D8;
 	text-decoration: none;
 	margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .button-group {
@@ -16,6 +17,10 @@
 
 .problem:hover {
 	color: #FFFFFF;
+}
+
+.problem.correct {
+    color: #00FF00;
 }
 
 body {
