@@ -96,13 +96,11 @@ $(window).load(function(){
                     //alert(result.error);
                     return;
                 }
-                var rate = result.rate;
-                if (rate >= 0)
+                var correct = result.correct;
+                if (correct)
                     swal("Good job!", "Your score is " + result.ops, "success");
-                    //alert("Your score is " + rate);
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");
-                    //alert("Your answer is incorrect");
                 getProblemList(0);
                 getProblem(currentPid);
             },

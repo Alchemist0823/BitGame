@@ -13,9 +13,9 @@ function getUserData(uid) {
     return userData[uid];
 }
 
-function addNewUser(uid) {
+function addNewUser(uid, password) {
     if (!getUserData(uid)) {
-        userData[uid] = {"username": uid, "prob": {}};
+        userData[uid] = {"username": uid, "password": password, "prob": {}};
     }
 }
 
