@@ -56,30 +56,31 @@ app.get("/api/prob/:pid", function(req, res){
     var prob = JSON.parse(JSON.stringify(data.probs[req.params.pid]));
     if (req.session.uid) {
         var userObj = user.getUserData(req.session.uid);
-        if (userObj.prob[prob.pid]) {
-            prob.rate = userObj.prob[prob.pid].rate;
-            prob.date = userObj.prob[prob.pid].date;
+        if (userObj.prob[req.params.pid]) {
+            prob.rate = userObj.prob[req.params.pid].rate;
+            prob.date = userObj.prob[req.params.pid].date;
+            prob.answer = userObj.prob[req.params.pid].answer;
         }
     }
     res.json(prob);
 });
 
 app.post("/api/answer", function(req, res){
-    checker.check(req, res);
-    if (req.session.uid) {
-        var userObj = user.getUserData(req.session.uid);
-        if (userObj.prob[req.body.pid]) {
-            userObj.prob[req.body.pid].rate = 10;
-            userObj.prob[req.body.pid].date = "213123";
-            user.writeAllUserData();
-        } else {
+    if (req.body.pid) {
+        checker.check(req, res);
+        if (req.session.uid) {
+            var userObj = user.getUserData(req.session.uid);
             userObj.prob[req.body.pid] = {
-                "rate" : 10,
-                "date":"213123"
+                "rate": 10,
+                "date": new Date(),
+                "answer": req.body.answer
             };
             user.writeAllUserData();
-        }
-    }
+            res.json(userObj.prob[req.body.pid]);
+        } else
+            res.json({"rate": 10});
+    } else
+        res.json({ok: 0});
 });
 
 var server = app.listen(3000, function(){

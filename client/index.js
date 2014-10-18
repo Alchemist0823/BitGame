@@ -20,8 +20,15 @@ $(window).load(function(){
             url: URL + "prob/" + pid,
             type: "get",
             success: function(result){
-                alert(result.description);
-                $("#question").text(result.description);
+                $("#question").html(result.description);
+                if (typeof(result.rate) != "undefined") {
+                    if (result.rate >= 0) {
+                        $("#result").html("You have solved this problem.<br/> Your highest score is " + result.rate + " on " + result.date);
+                    } else {
+                        $("#result").html("You failed on this problem<br/> Your incorrect answer is" + result.answer + ".");
+                    }
+                } else
+                    $("#result").html("You never try this problem");
             },
             dataType: "json"
         });
@@ -35,7 +42,7 @@ $(window).load(function(){
                 $("#problems").empty();
                 $.each(result, function(i, value) {
                     var correct = "";
-                    if (typeof(value.rate) != "undefined")
+                    if (typeof(value.rate) != "undefined" && value.rate >= 0)
                         correct = " correct";
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
@@ -51,19 +58,23 @@ $(window).load(function(){
     }
 
     function sendAnswer(){
+        alert($("#answer").val());
         $.ajax({
             url: URL + "answer",
             type: "post",
             success: function(result){
-                var correct = result.correct;
                 var rate = result.rate;
-
-                alert("Your answer is " + correct + ". Your score is " + rate);
+                if (rate >= 0)
+                    alert("Your score is " + rate);
+                else
+                    alert("Your answer is incorrect");
+                getProblemList();
+                getProblem(currentPid);
             },
             data: {
                 id: 1,
                 pid: currentPid,
-                answer: $("answer").innerText
+                answer: $("#answer").val()
             },
             dataType: "json"
         });
