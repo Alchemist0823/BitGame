@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"sunzehao":{"username":"sunzehao","password":"123456","prob":{"0":{"correct":1,"ops":1,"date":"2014-10-18T16:40:48.945Z","answer":"x << 1"}}},"noname01":{"username":"noname01","password":"111111","prob":{"0":{"correct":1,"date":"2014-10-18T16:01:07.739Z","answer":"x<<1"}}}}
+=======
+{"sunzehao":{"username":"sunzehao","password":"123456","prob":{"0":{"correct":1,"ops":1,"date":"2014-10-18T15:57:58.425Z","answer":"x << 1"},"1":{"correct":1,"ops":1,"date":"2014-10-18T15:58:20.782Z","answer":"x >> 1"}}},"test":{"username":"test","password":"123","prob":{}}}
+>>>>>>> fb799a8bdf53d6801d7b720c6b1dffccff2e7768

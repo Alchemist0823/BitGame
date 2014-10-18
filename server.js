@@ -6,27 +6,27 @@ var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var session = require("cookie-session");
 
-//var mongoose = require('mongoose');
-//var flash = require('connect-flash');
-//var passport = require('passport');
-//var configDB = require('./facebookAuth/database.js');
+var mongoose = require('mongoose');
+var flash = require('connect-flash');
+var passport = require('passport');
+var configDB = require('./facebookAuth/database.js');
 
 var data = require("./data.js");
 var checker = require("./checkAnswer.js");
 var user = require("./user.js");
 
-//var morgan       = require('morgan');
+var morgan       = require('morgan');
 
 var app = express();
 
 user.readAllUserData();
-//mongoose.connect(configDB.url);
+mongoose.connect(configDB.url);
 
 // Facebook stuff
-//require('./facebookAuth/passport')(passport);
+require('./facebookAuth/passport')(passport);
 
 
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(cookieParser());
 
 //static middleware
@@ -44,9 +44,9 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use(session({ secret: 'bitgame2014hackathon' }));
-//app.use(passport.initialize());
-//app.use(passport.session());
-//app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 
 app.get('/login', function(req,res) {
@@ -57,7 +57,7 @@ app.get('/logout', function(req, res) {
     req.session.uid = null;
     res.redirect('/login');
 });
-/*
+
 app.get('/auth/facebook', passport.authenticate('facebook', {scope : 'email'}));
 
 app.get('/auth/facebook/callback',
@@ -70,8 +70,7 @@ app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
 });
-*/
-/*
+
 function isLoggedIn(req, res, next) {
     console.log(req.session.uid);
 	if (req.isAuthenticated() || req.session.uid) {
@@ -79,14 +78,14 @@ function isLoggedIn(req, res, next) {
     }
 		
 	res.redirect('/login');
-}*/
-/*
+}
+
 app.get("/fblogin", isLoggedIn, function(req, res){
     user.addNewUser(req.user.facebook.email, 000000);
     console.log(user.getUserData(req.user.facebook.email));
     req.session.uid = req.user.facebook.email;
     res.redirect("/");
-});*/
+});
 
 app.post("/mylogin", function(req, res){
     if (req.body.uid) {
@@ -111,7 +110,7 @@ app.get("/", function(req, res){
     }
     res.render("index");
 });
-/*
+
 app.post("/api/login", function(req, res){
     if (req.body.uid) {
         if (!user.getUserData(req.body.uid)) {
@@ -121,7 +120,7 @@ app.post("/api/login", function(req, res){
         res.json({"ok": 1});
     }
     res.json({"ok": 0});
-});*/
+});
 
 app.get("/api/list", function(req, res){
     var probs = JSON.parse(JSON.stringify(data.list));
