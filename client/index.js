@@ -66,7 +66,7 @@ $(window).load(function(){
                 $("#problems").empty();
                 $.each(result, function(i, value) {
                     var correct = "";
-                    if (typeof(value.correct) != "undefined")
+                    if (typeof(value.correct) != "undefined" && value.correct)
                         correct = " correct";
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
