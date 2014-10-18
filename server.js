@@ -34,9 +34,16 @@ app.get("/", function(req, res){
     res.render("index");
 });
 
-app.get("/api/login", function(req, res){
-    req.session.uid = "1";
-    res.json({"ok": 1});
+app.get("/api/login/:uid", function(req, res){
+    if (req.params.uid) {
+
+        if (!user.getUserData(req.params.uid)) {
+            user.addNewUser(req.params.uid);
+        }
+        req.session.uid = req.params.uid;
+        res.json({"ok": 1});
+    }
+    res.json({"ok": 0});
 });
 
 app.get("/api/list", function(req, res){
