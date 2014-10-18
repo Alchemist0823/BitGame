@@ -23,7 +23,10 @@ $(window).load(function(){
                 $("#question").html(result.description);
                 $("#operators").empty();
                 $.each(result.operators, function(key, value) {
-                    $("#operators").append('<button type="Button" class="inline-button btn btn-default">' + key +'</button>')
+                    $("#operators").append('<button type="Button" class="operator-btn inline-button btn btn-default">' + key +'</button>')
+                });
+                $(".operator-btn").click(function(){
+                    $("#answer").val( $("#answer").val() + $(this).text());
                 });
                 if (typeof(result.rate) != "undefined") {
                     if (result.rate >= 0) {
