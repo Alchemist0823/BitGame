@@ -103,9 +103,14 @@ h1{
     display: inline-block;
     float: right;
     color: #fff95b;
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
+    transition: color 0.5s;
 }
 
-#total-stars < .fa-star {
+#total-stars .fa-star {
     display: inline-block;
     color: #fff95b;
 }
