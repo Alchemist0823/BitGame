@@ -1,5 +1,5 @@
 function check(req, res){
-    res.json({"correct": "passed", ""});
+    res.json({"correct": "passed"});
 }
 
 module.exports = {

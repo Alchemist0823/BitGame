@@ -7,13 +7,17 @@ var checker = require("./checkAnswer.js");
 
 var app = express();
 
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/client');
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
 app.get("/", function(req, res){
-    res.json({"content": "Hello World"});
+    res.render("index");
 });
 
 app.get("/list", function(req, res){
