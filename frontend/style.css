@@ -1,15 +1,10 @@
-/* Variables */
-@textColor = @gray-light;
-@textColorOnHover = @lighten(@textColor, 15%);
-
 .problem {
-	color: @textColor;
+	color: #D8D8D8;
 	text-decoration: none;
+}
 
-	&:hover {
-		color: @textColorOnHover;
-		text-decoration: underline;
-	}
+.problem:hover {
+	color: #FFFFFF;
 }
 
 body {
@@ -17,12 +12,12 @@ body {
 }
 
 #menu {
-	background-color: gray;
+	background-color: #2E2E2E;
 	font-size: 12pt;
 
 }
 
-#container {
-	background-color: black;
-	color: @textColor;
+#content {
+	background-color: #000000;
+	color: #FFFFFF;
 }
