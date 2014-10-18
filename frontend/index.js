@@ -4,8 +4,7 @@
 
 var URL="/";
 
-window.onload(function(){
-
+$(window).load(function(){
     var currentPid;
     var answer;
     var userName;
