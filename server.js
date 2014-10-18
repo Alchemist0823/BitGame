@@ -5,14 +5,73 @@ var bodyParser = require("body-parser");
 var compression = require("compression");
 var session = require("cookie-session");
 
+var mongoose = require('mongoose');
+var flash = require('connect-flash');
+var passport = require('passport');
+var app = express();
+var configDB = require('./facebookAuth/database.js');
+
 var data = require("./data.js");
 var checker = require("./checkAnswer.js");
 var user = require("./user.js");
 
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+
 user.readAllUserData();
+
+mongoose.connect(configDB.url);
 
 var app = express();
 
+// Facebook stuff
+require('./facebookAuth/passport')(passport);
+
+
+	app.use(morgan('dev'));
+	app.use(cookieParser());
+	app.use(bodyParser());
+	
+	app.set('view engine','ejs');
+	
+	app.use(session({ secret: 'ilovescotchscotchyscotchscotch' }));
+	app.use(passport.initialize());
+	app.use(passport.session());
+	app.use(flash());
+
+	app.get('/', function(req, res) {
+		res.render('./index.html');
+	});
+	
+	app.get('/profile', isLoggedIn, function(req,res) {
+		user.addNewUser(req.user.facebook.email);
+		console.log(user.getUserData(req.user.facebook.email));
+		req.session.uid = req.user.facebook.email;
+		res.render('index2.html');
+	});
+	
+	app.get('/auth/facebook', passport.authenticate('facebook', {scope : 'email'}));
+	
+	app.get('/auth/facebook/callback',
+		passport.authenticate('facebook', {
+			successRedirect : '/profile',
+			failureRedirect : '/'
+		}));
+	
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+
+
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+		
+	res.redirect('/');
+}
+	
 //static middleware
 var oneDay = 86400000;
 app.use(compression());
@@ -49,6 +108,8 @@ app.get("/api/login/:uid", function(req, res){
 app.get("/api/list", function(req, res){
     var probs = JSON.parse(JSON.stringify(data.list));
     if (req.session.uid) {
+		console.log(req.session.uid);
+		console.log(user.userData);
         var userObj = user.getUserData(req.session.uid);
         for (var attr in userObj.prob) {
             probs[attr].correct = userObj.prob[attr].correct;

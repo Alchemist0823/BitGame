@@ -33,6 +33,7 @@ module.exports = {
     readAllUserData: readAllUserData,
     getUserData: getUserData,
     addNewUser: addNewUser,
-    writeAllUserData: writeAllUserData
+    writeAllUserData: writeAllUserData,
+	userData: userData
 };
 

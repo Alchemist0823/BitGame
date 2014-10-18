@@ -4,8 +4,9 @@ module.exports = function(app, passport) {
 	});
 	
 	app.get('/profile', isLoggedIn, function(req,res) {
-		var user = require("./user.js");
+		var user = require("../user.js");
 		user.addNewUser(req.user);
+		req.session.uid = req.user;
 		res.render('index2.html');
 	});
 	
