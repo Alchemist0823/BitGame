@@ -19,13 +19,24 @@
 }
 
 body {
-	background-color: #FFFFFF;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+}
+
+.container {
+	padding: 0px;
+	margin: 0px;
+	background-color: #000000;
+}
+
+#answer {
+	margin-bottom: 1%;
 }
 
 #menu {
 	background-color: #2E2E2E;
 	font-size: 12pt;
-
 }
 
 #content {
