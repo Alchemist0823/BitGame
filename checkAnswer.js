@@ -14,7 +14,7 @@ var baseProgram =
         'return 0;' +
     '}';
 
-function check(req, res){
+function check(req, callback){
     var reqJson = req.body;
     var pid = reqJson.pid;
     var ans = reqJson.answer;
@@ -29,21 +29,23 @@ function check(req, res){
         testcases: testCasesStr,
         api_key: APIKey
     };
-    request.post({url:hackerRankAPIURL, formData: formData}, function optionalCallback(err, httpResponse, body) {
+    request.post({url:hackerRankAPIURL, formData: formData}, function (err, httpResponse, body) {
         if (err) {
-            console.error('failed:', err);
-            res.json({"error": "connection error", "pass": false});
-            return;
-        }
-        var jsonRes = JSON.parse(body);
-        var compileMsg = jsonRes.result.compilemessage;
-        var stderr = jsonRes.result.stderr;
-        var stdout = jsonRes.result.stdout;
-        if(compileMsg == "" && checkRE(stderr) && JSON.stringify(stdout) == correctOutStr){
-            res.json({"pass": true});
-        }
-        else {
-            res.json({"error:": "wrong answer", "pass": false});
+            console.error('error:', err);
+            callback({"error": "connection error", "pass": false});
+        } else {
+            var jsonReceived = JSON.parse(body);
+            var compileMsg = jsonReceived.result.compilemessage;
+            var stderr = jsonReceived.result.stderr;
+            var stdout = jsonReceived.result.stdout;
+            if (compileMsg == "" && checkRE(stderr) && JSON.stringify(stdout) == correctOutStr) {
+                console.log(JSON.stringify({"pass": true}));
+                callback({"pass": true});
+            }
+            else {
+                console.log(JSON.stringify({"error": "wrong answer", "pass": false}));
+                callback({"error": "wrong answer", "pass": false});
+            }
         }
     });
 }
