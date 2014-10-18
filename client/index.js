@@ -9,7 +9,7 @@ $(window).load(function(){
     var answer;
     var userName;
 
-    getProblemList();
+    getProblemList(1);
     $("#submit").click(function(){
         sendAnswer();
     });
@@ -21,6 +21,10 @@ $(window).load(function(){
             type: "get",
             success: function(result){
                 $("#question").html(result.description);
+                $("#operators").empty();
+                $.each(result.operators, function(key, value) {
+                    $("#operators").append('<button type="Button" class="inline-button btn btn-default">' + key +'</button>')
+                });
                 if (typeof(result.rate) != "undefined") {
                     if (result.rate >= 0) {
                         $("#result").html("You have solved this problem.<br/> Your highest score is " + result.rate + " on " + result.date);
@@ -34,7 +38,7 @@ $(window).load(function(){
         });
     }
 
-    function getProblemList(){
+    function getProblemList(isfresh){
         $.ajax({
             url: URL + "list",
             type: "get",
@@ -49,6 +53,8 @@ $(window).load(function(){
                 $(".problem").click(function(){
                     getProblem(this.id.substring(8));
                 });
+                if (isfresh == 1)
+                    getProblem($(".problem").first().attr("id").substring(8));
             },
             data: {
                 id: userName
@@ -68,7 +74,7 @@ $(window).load(function(){
                     alert("Your score is " + rate);
                 else
                     alert("Your answer is incorrect");
-                getProblemList();
+                getProblemList(0);
                 getProblem(currentPid);
             },
             data: {
