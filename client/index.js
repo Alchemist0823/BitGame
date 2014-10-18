@@ -10,7 +10,21 @@ $(window).load(function(){
     var userName;
 
     getProblemList(1);
+
+    function showLoading(){
+        $("#submit").prop('disabled', true);
+        $("#show-levels").prop('disabled', true);
+        $("#spinner").css("opacity", 1);
+    }
+
+    function finishLoading(){
+        $("#submit").prop('disabled', false);
+        $("#show-levels").prop('disabled', false);
+        $("#spinner").css("opacity", 0);
+    }
+
     $("#submit").click(function(){
+        showLoading();
         sendAnswer();
     });
 
@@ -20,11 +34,13 @@ $(window).load(function(){
             url: URL + "prob/" + pid,
             type: "get",
             success: function(result){
-                $("#question").html(result.description);
+                $("#question").text(result.description);
+                $("#level-title").text(result.title);
                 $("#operators").empty();
                 $.each(result.operators, function(key, value) {
                     $("#operators").append('<button type="Button" class="operator-btn inline-button btn btn-default">' + key +'</button>')
                 });
+                $("#content").fadeIn();
                 $(".operator-btn").click(function(){
                     $("#answer").val( $("#answer").val() + $(this).text());
                 });
@@ -54,6 +70,7 @@ $(window).load(function(){
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
                 $(".problem").click(function(){
+                    $('#myModal').modal('hide');
                     getProblem(this.id.substring(8));
                 });
                 if (isfresh == 1)
@@ -72,15 +89,19 @@ $(window).load(function(){
             url: URL + "answer",
             type: "post",
             success: function(result){
+                finishLoading();
                 if(result.error){
-                    alert(result.error);
+                    swal("Ooops!", result.error, "error");
+                    //alert(result.error);
                     return;
                 }
                 var rate = result.rate;
                 if (rate >= 0)
-                    alert("Your score is " + rate);
+                    swal("Good job!", "Your score is " + rate, "success");
+                    //alert("Your score is " + rate);
                 else
-                    alert("Your answer is incorrect");
+                    swal("Ooops!", "Your answer is incorrect.", "error");
+                    //alert("Your answer is incorrect");
                 getProblemList(0);
                 getProblem(currentPid);
             },

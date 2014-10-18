@@ -1,7 +1,7 @@
 var probs = {
     "0" : {
         "title": "level 1",
-        "description": "task 1",
+        "description": "Given an integer x, calculate x + x",
         "operators": {
             "&": 1,
             "|": 1,
@@ -17,6 +17,25 @@ var probs = {
         },
         "input": ["1", "2", "3"],
         "output": ["2", "4", "6"]
+    },
+    "1" : {
+        "title": "level 2",
+        "description": "Given an integer x, calculate x / 2",
+        "operators": {
+            "&": 1,
+            "|": 1,
+            "&&": 1,
+            "||": 1,
+            "<<": 1,
+            ">>": 1,
+            "^": 1,
+            "!": 1,
+            "~": 1,
+            "+": 1,
+            "-": 1
+        },
+        "input": ["2", "4", "8"],
+        "output": ["1", "2", "4"]
     }
 };
 
