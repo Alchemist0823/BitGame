@@ -6,26 +6,33 @@
 	<title>Node Authentication</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- load fontawesome -->
-	<style>
-		body 		{ padding-top:80px; }
-	</style>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-2.1.1.min.js"></script>
 </head>
 <body>
     <div class="container">
 
-	<div class="jumbotron text-center">
-		<h1><span class="fa fa-calculator"></span> >>B|tG&me>></h1>
+        <div class="text-center" id="login-title">
+            <h1><span class="fa fa-calculator"></span> >>B|tG&me>></h1>
 
-		<p>To Play, Login with:</p>
+            <p>To Play, Login with:</p>
 
-            <!--a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a> <br/-->
-            <form action="/mylogin" method="post">
-                <input type="text" name="uid" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <button type="submit"></button>
-            </form>
+                <!--a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a> <br/-->
+                <form action="/mylogin" method="post">
+                    <input type="text" class="form-control" name="uid" placeholder="Username"><br/>
+                    <input type="password" class="form-control" name="password" placeholder="Password"><br/>
+                    <button class="btn btn-success" type="submit">Go</button>
+                </form>
         </div>
 
     </div>
+    <script>
+        $(function() {
+            $(window).load(function () {
+                $("#login-title").fadeIn();
+            });
+        });
+    </script>
 </body>
 </html>	
