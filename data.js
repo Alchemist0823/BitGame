@@ -133,6 +133,24 @@ var probs = {
         "output": ["2", "2", "100"],
         "level": [10, 15]
     }
+	"7" : {
+        "title": "isPower2",
+        "description": "Return 1 if x is a power of 2, 0 otherwise",
+        "operators": {
+            "!": 5,
+            "|": 5,
+            "&": 5,
+            "<<": 5,
+            ">>": 5,
+            "^": 5,
+            "+": 5,
+            "~": 5
+        },
+        "input": ["1", "128", "4096"],
+        "output": ["0", "1", "1"],
+        "level": [10, 15]
+    }
+	
 };
 
 var list = {
