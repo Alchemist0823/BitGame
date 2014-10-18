@@ -35,7 +35,7 @@ require('./facebookAuth/passport')(passport);
 	
 	app.set('view engine','ejs');
 	
-	app.use(session({ secret: 'ilovescotchscotchyscotchscotch' }));
+	app.use(session({ secret: 'dubhackslolll' }));
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(flash());
@@ -44,7 +44,7 @@ require('./facebookAuth/passport')(passport);
 		res.render('./index.html');
 	});
 	
-	app.get('/profile', isLoggedIn, function(req,res) {
+	app.get('/bitGame', isLoggedIn, function(req,res) {
 		user.addNewUser(req.user.facebook.email);
 		console.log(user.getUserData(req.user.facebook.email));
 		req.session.uid = req.user.facebook.email;
@@ -55,7 +55,7 @@ require('./facebookAuth/passport')(passport);
 	
 	app.get('/auth/facebook/callback',
 		passport.authenticate('facebook', {
-			successRedirect : '/profile',
+			successRedirect : '/bitGame',
 			failureRedirect : '/'
 		}));
 	
