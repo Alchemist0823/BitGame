@@ -79,12 +79,11 @@ $(window).load(function(){
                 $("#problems").empty();
                 $.each(result, function(i, value) {
                     var stars = 0;
-                    if (value.correct)
-                        var stars = (result.ops <= result.level[0]) ? 3 : (result.ops <= result.level[1] ? 2 : 1);
-                    totalStars = totalStars + stars;
                     var correct = "";
-                    if (typeof(value.correct) != "undefined" && value.correct)
+                    if (typeof(value.correct) != "undefined" && value.correct) {
                         correct = "correct";
+                        stars = (result.ops <= result.level[0]) ? 3 : (result.ops <= result.level[1] ? 2 : 1);
+                    }
                     else stars = 0;
                     totalStars = totalStars + stars;
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
