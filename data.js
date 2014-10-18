@@ -1,7 +1,10 @@
+var p
+
 var probs = {
     "0" : {
         "title": "level 1",
-        "description": "task 1"
+        "description": "task 1",
+        "program": ""
     }
 };
 
