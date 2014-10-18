@@ -78,7 +78,7 @@ $(window).load(function(){
                 var totalStars = 0;
                 $("#problems").empty();
                 $.each(result, function(i, value) {
-                    var stars = (value.ops <= value.level[0]) ? 3 : (value.ops <= value.level[1] ? 2 : 1);
+                    var stars = (result.ops <= result.level[0]) ? 3 : (result.ops <= result.level[1] ? 2 : 1);
                     totalStars = totalStars + stars;
                     var correct = "";
                     if (typeof(value.correct) != "undefined" && value.correct)
