@@ -81,8 +81,8 @@ $(window).load(function(){
                     var stars = 0;
                     var correct = "";
                     if (typeof(value.correct) != "undefined" && value.correct) {
-                        correct = "correct";
-                        stars = (result.ops <= result.level[0]) ? 3 : (result.ops <= result.level[1] ? 2 : 1);
+                        correct = " correct";
+                        stars = (value.ops <= value.level[0]) ? 3 : (value.ops <= value.level[1] ? 2 : 1);
                     }
                     else stars = 0;
                     totalStars = totalStars + stars;
