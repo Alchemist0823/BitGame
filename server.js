@@ -44,7 +44,8 @@ app.get("/api/list", function(req, res){
     if (req.session.uid) {
         var userObj = user.getUserData(req.session.uid);
         for (var attr in userObj.prob) {
-            probs[attr].rate = userObj.prob[attr].rate;
+            probs[attr].correct = userObj.prob[attr].correct;
+            probs[attr].ops = userObj.prob[attr].ops;
             //probs[attr]["date"] = userObj.prob[attr]["date"];
         }
     }
@@ -57,7 +58,8 @@ app.get("/api/prob/:pid", function(req, res){
     if (req.session.uid) {
         var userObj = user.getUserData(req.session.uid);
         if (userObj.prob[req.params.pid]) {
-            prob.rate = userObj.prob[req.params.pid].rate;
+            prob.correct = userObj.prob[req.params.pid].correct;
+            prob.ops = userObj.prob[req.params.pid].ops;
             prob.date = userObj.prob[req.params.pid].date;
             prob.answer = userObj.prob[req.params.pid].answer;
         }
@@ -66,29 +68,31 @@ app.get("/api/prob/:pid", function(req, res){
 });
 
 app.post("/api/answer", function(req, res){
-    var msg = checker.validate(req);
-    if (msg == "ok"){
+    var result = checker.validate(req);
+    if (result.msg == "ok"){
         console.log("passed validation");
         checker.check(req, function(resJson) {
             console.log(resJson);
             if (req.session.uid) {
                 var userObj = user.getUserData(req.session.uid);
 
-                if (!(userObj.prob[req.body.pid]) || userObj.prob[req.body.pid].rate < resJson.rate) {
-
+                if (!userObj.prob[req.body.pid] ||
+                        (resJson.correct && (!userObj.prob[req.body.pid].correct || (userObj.prob[req.body.pid].ops > result.ops)))
+                        || (!resJson.correct && !userObj.prob[req.body.pid].correct)) {
                     userObj.prob[req.body.pid] = {
-                        "rate": resJson.rate,
+                        "correct": resJson.correct,
+                        "ops": result.ops,
                         "date": new Date(),
                         "answer": req.body.answer
                     };
                     user.writeAllUserData();
                 }
-                res.json({"rate": resJson.rate});
+                res.json({"correct": resJson.correct, "ops": result.ops});
             } else
-                res.json({"rate": resJson.rate});
+                res.json({"correct": resJson.correct, "ops": result.ops});
         });
     } else {
-        res.json({"error": msg});
+        res.json({"error": result.msg});
     }
 });
 

@@ -73,3 +73,8 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 }
+
+.operator-btn {
+    width: 40px;
+    margin-right: 5px;
+}
