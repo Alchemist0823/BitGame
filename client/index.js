@@ -8,6 +8,7 @@ $(window).load(function(){
     var currentPid;
     var answer;
     var userName;
+    var totProb = 7;
 
     getProblemList(1);
 
@@ -109,8 +110,23 @@ $(window).load(function(){
                     return;
                 }
                 var correct = result.correct;
-                if (correct)
-                    swal("Good job!", "Can you do better?", "success");
+                if (correct){
+                    if(parseInt(currentPid) == totProb - 1)
+                        swal("WOW!", "You solved the last problem!", "success");
+                     else swal({
+                        title: "Good job!",
+                        text: "Can you do better?",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: "#5cb85c",
+                        confirmButtonText: "Next Level",
+                        cancelButtonText: "Try Again",
+                        closeOnConfirm: true
+                    }, function(){
+                        $("#answer").val("");
+                        getProblem(parseInt(currentPid) + 1);
+                    });
+                }
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");
                 getProblemList(0);
