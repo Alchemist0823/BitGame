@@ -2,7 +2,7 @@
  * Created by Alchemist on 2014/10/17.
  */
 
-var URL="http://localhost:3000/";
+var URL="/api/";
 
 $(window).load(function(){
     var currentPid;
@@ -21,11 +21,7 @@ $(window).load(function(){
             type: "get",
             success: function(result){
                 $("#title").innerText = result.title
-                $("#problem").innerText = result.title
-                $("#menu").empty();
-                $.each(result, function(i, value) {
-                    $("#menu").append('<div class=\"problem\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
-                });
+                $("#question").innerText = result.description;
             }
         });
     }
