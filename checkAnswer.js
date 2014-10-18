@@ -113,9 +113,8 @@ function validate(req){
                 return {msg:"illegal operator"};
         }
     }
-    var stars = ops <= probInfo.level[0] ? 3 : (ops <= probInfo.level[1] ? 2 : 1);
-    console.log(stars);
-    return {msg: "ok", stars: stars};
+
+    return {msg: "ok", ops: ops};
 }
 
 module.exports = {

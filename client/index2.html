@@ -18,11 +18,12 @@
 
             <p>To Play, Login with:</p>
 
-                <!--a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a> <br/-->
                 <form action="/mylogin" method="post">
                     <input type="text" class="form-control" name="uid" placeholder="Username"><br/>
                     <input type="password" class="form-control" name="password" placeholder="Password"><br/>
-                    <button class="btn btn-success" type="submit">Go</button>
+                    <a href="/auth/facebook" class="btn btn-primary" style="float: left"><span class="fa fa-facebook"></span> Facebook</a>
+                    <!--i class="fa fa-spinner fa-spin" id="spinner"></i-->
+                    <button class="btn btn-success" type="submit" style="float: right">Go</button>
                 </form>
         </div>
 

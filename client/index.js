@@ -44,12 +44,27 @@ $(window).load(function(){
                 $(".operator-btn").click(function(){
                     $("#answer").val( $("#answer").val() + $(this).text());
                 });
+
+
+
                 if (typeof(result.correct) != "undefined") {
                     if (result.correct) {
                         $("#result").html("You have solved this problem.<br/> The minimum number of operators you used is " + result.ops + " on " + result.date);
                     } else {
                         $("#result").html("You failed on this problem<br/>");
                     }
+
+                    var stars = (result.ops <= result.level[0]) ? 3 : (result.ops <= result.level[1] ? 2 : 1);
+                    console.log(stars);
+                    if (!result.correct)
+                        stars = 0;
+
+                    $("#stars").removeClass("stars-0");
+                    $("#stars").removeClass("stars-1");
+                    $("#stars").removeClass("stars-2");
+                    $("#stars").removeClass("stars-3");
+                    $("#stars").addClass("stars-" + stars);
+
                     $("#answer").val(result.answer);
                 } else
                     $("#result").html("You never try this problem");
@@ -98,7 +113,7 @@ $(window).load(function(){
                 }
                 var correct = result.correct;
                 if (correct)
-                    swal("Good job!", "Your score is " + result.stars, "success");
+                    swal("Good job!", "Your score is " + result.ops, "success");
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");
                 getProblemList(0);
