@@ -6,9 +6,8 @@
 	<title>Node Authentication</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- load fontawesome -->
-	<style>
-		body 		{ padding-top:80px; }
-	</style>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-2.1.1.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -18,7 +17,7 @@
 
 		<p>To Play, Login with:</p>
 
-\                <form action="/mylogin" method="post">
+                <form action="/mylogin" method="post">
                     <input type="text" class="form-control" name="uid" placeholder="Username"><br/>
                     <input type="password" class="form-control" name="password" placeholder="Password"><br/>
                     <a href="/auth/facebook" class="btn btn-primary" style="float: left"><span class="fa fa-facebook"></span> Facebook</a>
