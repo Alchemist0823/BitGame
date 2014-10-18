@@ -49,10 +49,7 @@ app.use(passport.session());
 app.use(flash());
 
 
-app.get('/login', isLoggedIn, function(req,res) {
-    user.addNewUser(req.user.facebook.email);
-    console.log(user.getUserData(req.user.facebook.email));
-    req.session.uid = req.user.facebook.email;
+app.get('/login', function(req,res) {
     res.render('index');
 });
 
@@ -66,7 +63,7 @@ app.get('/auth/facebook/callback',
 
 app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 
@@ -74,21 +71,23 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 		
-	res.redirect('/');
+	res.redirect('/login');
 }
 
 
-app.get("/", function(req, res){
+app.get("/", isLoggedIn, function(req, res){
+    user.addNewUser(req.user.facebook.email, 000000);
+    console.log(user.getUserData(req.user.facebook.email));
+    req.session.uid = req.user.facebook.email;
     res.render("index2");
 });
 
-app.get("/api/login/:uid", function(req, res){
-    if (req.params.uid) {
-
-        if (!user.getUserData(req.params.uid)) {
-            user.addNewUser(req.params.uid);
+app.get("/api/login/", function(req, res){
+    if (req.body.uid) {
+        if (!user.getUserData(req.body.uid)) {
+            user.addNewUser(req.body.uid, req.body.password);
         }
-        req.session.uid = req.params.uid;
+        req.session.uid = req.body.uid;
         res.json({"ok": 1});
     }
     res.json({"ok": 0});
