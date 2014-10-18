@@ -18,16 +18,29 @@
 	color: #FFFFFF;
 }
 
-body {
-	background-color: #000000;
+.container {
 	margin: 0px;
 	padding: 0px;
 }
 
-.container {
-	padding: 0px;
-	margin: 0px;
+#menu-toggle {
+	font-size: 24pt;
+	color: #FFFFFF;
+}
+
+#menu-icon {
+	top: 5px;
+	float: right;
+}
+
+#menu-toggle:hover {
+	cursor: pointer;
+}
+
+body {
 	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
 }
 
 #answer {
@@ -36,10 +49,16 @@ body {
 
 #menu {
 	background-color: #2E2E2E;
-	font-size: 12pt;
+	font-size: 10pt;
+	height: 100%;
+	overflow: hidden;
 }
 
 #content {
 	background-color: #000000;
 	color: #FFFFFF;
+}
+
+@media(min-height: 1024px) {
+	
 }
