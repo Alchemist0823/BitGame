@@ -45,7 +45,7 @@ $(window).load(function(){
                     $("#answer").val( $("#answer").val() + $(this).text());
                 });
 
-
+                $("#stars").removeClass("stars-0 stars-1 stars-2 stars-3").addClass("stars-0");
 
                 if (typeof(result.correct) != "undefined") {
                     if (result.correct) {
@@ -59,11 +59,7 @@ $(window).load(function(){
                     if (!result.correct)
                         stars = 0;
 
-                    $("#stars").removeClass("stars-0");
-                    $("#stars").removeClass("stars-1");
-                    $("#stars").removeClass("stars-2");
-                    $("#stars").removeClass("stars-3");
-                    $("#stars").addClass("stars-" + stars);
+                    $("#stars").removeClass("stars-0").addClass("stars-" + stars);
 
                     $("#answer").val(result.answer);
                 } else
@@ -91,6 +87,7 @@ $(window).load(function(){
                 $("#total-stars").html("Total <i class="fa fa-star"></i>: " + totalStars);
                 $(".problem").click(function(){
                     $('#myModal').modal('hide');
+                    $("#answer").val("");
                     getProblem(this.id.substring(8));
                 });
                 if (isfresh == 1)
@@ -117,7 +114,7 @@ $(window).load(function(){
                 }
                 var correct = result.correct;
                 if (correct)
-                    swal("Good job!", "Your score is " + result.ops, "success");
+                    swal("Good job!", "Can you do better?", "success");
                 else
                     swal("Ooops!", "Your answer is incorrect.", "error");
                 getProblemList(0);
