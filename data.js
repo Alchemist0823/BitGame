@@ -1,7 +1,7 @@
 var probs = {
     "0" : {
         "title": "Double",
-        "description": "using only the following bit operations to return the value of x * 2. Input variable: x",
+        "description": "Using only the following bit operations to return the value of x * 2. Input variable: x.",
         "operators": {
             "&": 1,
             "|": 1,
@@ -21,7 +21,7 @@ var probs = {
     },
     "1" : {
         "title": "Div2",
-        "description": "Given an integer x, calculate x / 2",
+        "description": "Using only the following bit operations to return the value of x / 2. Input variable: x.",
         "operators": {
             "&": 1,
             "|": 1,
@@ -41,7 +41,7 @@ var probs = {
     },
 	"2" : {
         "title": "x AND y",
-        "description": "Given x and y, calculate x AND y using DeMorgan's law",
+        "description": "Given x and y, calculate x AND y using DeMorgan's Law.",
         "operators": {
             "&": 0,
             "|": 1,
@@ -61,7 +61,7 @@ var probs = {
     },
 	"3" : {
         "title": "Two's Complement",
-        "description": "Return 1 if x can be represented as an n-bit, two's complement integer",
+        "description": "Return 1 if x can be represented as an n-bit, two's complement integer. Return 0 otherwise.",
         "operators": {
             "&": 1,
             "|": 1,
@@ -81,7 +81,7 @@ var probs = {
     },
 	"4" : {
         "title": "Normalize",
-        "description": "Return 1 if positive, 0 if zero, -1 if negative",
+        "description": "Return 1 if x is positive, 0 if zero, and -1 if negative",
         "operators": {
             "&": 1,
             "|": 1,
@@ -118,7 +118,7 @@ var probs = {
     },
     "6" : {
         "title": "Conditional",
-        "description": " conditional - same as x ? y : z. Example: conditional(2,4,5) = 4. ",
+        "description": "Conditional - same as x ? y : z. Example: conditional(2, 4, 5) = 4. ",
         "operators": {
             "!": 5,
             "|": 5,
@@ -135,7 +135,7 @@ var probs = {
     },
 	"7" : {
         "title": "isPower2",
-        "description": "Return 1 if x is a power of 2, 0 otherwise",
+        "description": "Return 1 if x is a power of 2, and 0 otherwise",
         "operators": {
             "!": 5,
             "|": 5,
