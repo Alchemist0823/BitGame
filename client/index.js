@@ -85,7 +85,7 @@ $(window).load(function(){
                         correct = " correct";
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
-                $("#total-stars").html("Total <i class="fa fa-star"></i>: " + totalStars);
+                $("#total-stars").html("Total <i class='fa fa-star'></i>: " + totalStars);
                 $(".problem").click(function(){
                     $('#myModal').modal('hide');
                     $("#answer").val("");
