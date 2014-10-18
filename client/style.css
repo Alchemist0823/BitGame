@@ -95,13 +95,18 @@ h1{
     height: 40px;
 }
 
-#show-levels{
+#show-levels {
     float: right;
 }
 
 #stars{
     display: inline-block;
     float: right;
+    color: #fff95b;
+}
+
+#total-stars < .fa-star {
+    display: inline-block;
     color: #fff95b;
 }
 
@@ -133,6 +138,10 @@ h1{
     -ms-transition: opacity 0.5s;
     -o-transition: opacity 0.5s;
     transition: opacity 0.5s;
+}
+
+#total-stars {
+    font-size: 12pt;
 }
 
 #login-title {

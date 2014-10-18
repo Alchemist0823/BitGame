@@ -75,13 +75,17 @@ $(window).load(function(){
             url: URL + "list",
             type: "get",
             success: function(result){
+                var totalStars = 0;
                 $("#problems").empty();
                 $.each(result, function(i, value) {
+                    var stars = (value.ops <= value.level[0]) ? 3 : (value.ops <= value.level[1] ? 2 : 1);
+                    totalStars = totalStars + stars;
                     var correct = "";
                     if (typeof(value.correct) != "undefined" && value.correct)
                         correct = " correct";
                     $("#problems").append('<div class=\"problem' + correct + '\" id=\"problem_' + value.pid + '\">' + value.title + '</div>');
                 });
+                $("#total-stars").html("Total <i class="fa fa-star"></i>: " + totalStars);
                 $(".problem").click(function(){
                     $('#myModal').modal('hide');
                     $("#answer").val("");
